@@ -1,0 +1,49 @@
+{
+    "run_mode": "single",
+    "task": "data_processing",
+    "job_id": "dev",
+    "image": "gddi-image",
+    "data_dir": "/gddi_data",
+    "log_dir": "/gddi_log",
+    "output_dir": "/gddi_output",
+    "args": {
+        "model": "",
+        "model_config": "",
+        "iter_num": -1,
+        "pretrain_weight": "",
+        "data": {
+            "classes": [
+                "car"
+            ],
+            "data_type": "VOCDataset",
+            "train_ann_file": "/gddi_output_config/gddi_data/sub_sub_sub_sub_instances_train2017.json",
+            "train_img_prefix": "val2017",
+            "val_ann_file": "/gddi_output_config/gddi_data/sub_sub_sub_sub_instances_val2017.json",
+            "val_img_prefix": "val2017",
+            "test_ann_file": "",
+            "test_img_prefix": ""
+        },
+        "lr": -1,
+        "map": 0.0001,
+        "resume": 0,
+        "duration": 30,
+        "epoch_num": 1,
+        "device": {
+            "type": "gpu",
+            "number": 1
+        },
+        "ops": [
+            "CONV33",
+            "CONV55",
+            "MaxPool",
+            "AvgPool"
+        ],
+        "compression": {
+            "compression_iter": "",
+            "model_weight": "",
+            "strategy": "lossly",
+            "compression_ratio": 0.5,
+            "compression_Graininess": 5
+        }
+    }
+}
