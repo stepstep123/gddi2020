@@ -1,0 +1,34 @@
+1.small_object_detection:
+logistic:
+    计算每类面积中小于32×32个数，计算其和，然后求数据集中bbox中面积的个数，
+    求小目标占总的比例，若小于0.7,则不是小目标数据集，否则是小目标数据集。
+
+2.few_shot_detection:
+logistic:
+    计算每类的数量
+    所有类别都少于50张图时候就是few shot
+
+3. intensive_detection:
+logistic:
+    如果每张图片bbox大于 5 并且 最大bbox 和最小bbox之间的距离平方小于 100, 则该
+    数据为 intensive, 否则为非intensive
+    最后计算intensive num / img num 的比例是大于 0.5,大于则数据集为intensive, 否则不是
+
+4.occlusion_detection:
+logistic:
+    计算每张图片中两两bbox 的iou, 若有iou > 0.2 ， 则该张图片为occlusion, 否则 not occlusion
+    计算数据集中occlusion img num / img num, 若大于0.5, 则整个数据集为occlusion , 否则not
+
+5.long tail detection:
+logistic:
+    计算每类数据集占总的数据集的比列，若最大类的比例 / 最小类的比例 > 20 则是 long tail, 否则不是
+
+6. far_near detection:
+logistic:
+    计算每类数据的面积, 分别取最小最大以及中间值的面积，若最大与最小的面积之差大于中间值面积，则说明该类为远近景
+    最后统计远近景类占总类的比例，若大于0.5, 整个数据集为远近景数据，否则不是
+
+7. brightness detection:
+logistic:
+    计算每张image的像素，若计算像素值在（0, 30）范围的个数，且计算像素值在（220, 256）范围的个数，最后分别计算两类像素占整张像素的比例，
+    若像素（0, 30）比例大于0.4, 则该张图为dark image, 若像素（220, 256）比例大于0.5,则该图为bright image.其他范围的为正常image.

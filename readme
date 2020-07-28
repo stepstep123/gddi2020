@@ -1,0 +1,6 @@
+该文件是对project文件内的简要说明
+
+-- coco_info_v1.py 对coco格式的json文件进行初步解析，得到基本信息，如bbox area, bbox sum等信息。
+-- coco_info_v2.py 对coco_info_v1进一步调用，得到七大工具的信息。
+-- visualize.py 对coco_info_v2进行调用，查看
+-- coco_criteria_detection.py 七大工具初版，但是阈值有待改善。
